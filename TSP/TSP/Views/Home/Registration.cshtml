@@ -1,0 +1,80 @@
+﻿@model TSP.Models.LogInModel
+@{
+    ViewBag.Title = "Registration";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+</head>
+<body>
+    <script>
+        function Register(e) {
+            e.preventDefault();
+            document.getElementById('btnRegister').innerHTML = "Successfully registered."
+        }
+        //function Register() {
+        //    alert("Successfully registered.");
+        //}
+    </script>
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <h4>Register</h4><hr />
+            @Html.ValidationSummary(true, "", new { @class = "textdanger" })
+            <div class="form-group">
+                @Html.LabelForModel("Name :")
+                <div>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelForModel("User ID :")
+                <div>
+                    @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelForModel("Password :")
+                <div>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelForModel("Re-enter Password :")
+                <div>
+                    @Html.EditorFor(model => model.ReEnteredPassword, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelForModel("Email :")
+                <div>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelForModel("Date of Birth :")
+                <div>
+                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelForModel("Phone Number :")
+                <div>
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div>
+                @*<button id="btnRegister" class="btn btn-default" onclick="Register(event)">Register</button>*@
+                <input type="button" value="Register" class="btn btn-default" onclick="location.href='@Url.Action("Registration","Home")'" />
+            </div>
+        </div>
+    }
+    <div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\DAL.dll.config
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\DAL.dll
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\DAL.pdb
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\EntityFramework.dll
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\EntityFramework.xml
+E:\DriveTwo\TSP\TSP\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\DriveTwo\TSP\TSP\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\DriveTwo\TSP\TSP\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\DriveTwo\TSP\TSP\DAL\obj\Debug\DAL.dll
+E:\DriveTwo\TSP\TSP\DAL\obj\Debug\DAL.pdb
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\DAL.dll.config
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\DAL.dll
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\DAL.pdb
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\EntityFramework.dll
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\EntityFramework.xml
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\obj\Debug\DAL.dll
+E:\DriveTwo\New folder (2)\TSP-Project\TSP\DAL\obj\Debug\DAL.pdb

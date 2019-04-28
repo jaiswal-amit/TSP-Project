@@ -1,0 +1,505 @@
+﻿@model TSP.Models.LogInModel
+@{
+    ViewBag.Title = "CommonLogIn";
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+    <!-- Chrome, Firefox OS, Opera and Vivaldi -->
+    <meta name="theme-color" content="#4285f4" />
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4285f4" />
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4285f4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+    <link href="~/CSS/App.css" rel="stylesheet" />
+    <link href="~/CSS/Fonts.css" rel="stylesheet" />
+    <link href="~/CSS/LogIn.css" rel="stylesheet" />
+
+    <title>
+        Login
+    </title>
+    <style type="text/css">
+        .legend {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+<body id="login" onload="disableBack();"
+      onpageshow="if(event.persisted) disableBack();">
+
+    <div class="schoolLogo">
+        @*<img src="../logo/35.jpg" id="imgLogo" /><br />*@
+        <span id="lblSchoolName">TSP</span>
+    </div>
+
+    <div class="login">
+        @using (Html.BeginForm("About", "Home", FormMethod.Post))
+        {
+            @*<form method="post" action="/About" id="form1" class="login">*@
+            @*<div class="aspNetHidden">
+                    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNTY3OTY5MzI4DxYCHgxMb2dpbkF0dGVtcHRmFgYCBQ8WAh4Dc3JjBQ4uLi9sb2dvLzM1LmpwZ2QCBw8PFgIeBFRleHQFFkdSRUVOV0FZIE1PREVSTiBTQ0hPT0xkZAIND2QWAgIFDxYEHgRocmVmBRxwb2xpY2llcy5hc3B4P3NjaG9vbGNvZGU9Z21zHgdWaXNpYmxlZ2QYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFC2Noa1JlbWVtYmVyCBazg8mTcaHeW5FEaXksr8vOivZYVFNDaKDSIodcTf0=" />
+                </div>
+
+                <div class="aspNetHidden">
+
+                    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="82312306" />
+                    <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAA3cJEfCpSvwrefXhRohyHCrvc5gaOHRvIY/0cu0kPVYLbCtug0JjDn3xGlYO0CReZ1QzXL7f5Xzfa5FwdPL1H4NsGa45HFrE8YoYC/bJkAVR20S8zXPPN6WOjNHahfM+pa9wHpizfhFI1/bNqpb4ZEmdjb4xzpKucCqKjegIpvFhjCrU8qnr7/XI0aeDofvVTGjOglmm5fGSk5UkpFsfK4eHbku3xW7gNlIcAIDo1mNexXE3dkwa1cRACVa3MHp4BuinihG6d/Xh3PZm3b5AoMQoRYZ5gSQ+Xf6cCquxpeWuskCh/AN1WJiOlfe9pUmZpo=" />
+                </div>*@
+
+            <input name="HSchoolCode" type="hidden" id="HSchoolCode" value="GMS" />
+            <input name="HSchoolID" type="hidden" id="HSchoolID" />
+            <input name="HBackImageHeight" type="hidden" id="HBackImageHeight" />
+            <input name="HLogin" type="hidden" id="HLogin" value="0" />
+            <input name="HPasswordAttempt" type="hidden" id="HPasswordAttempt" value="0" />
+            <fieldset>
+
+                <legend id="legend1" class="legend">Login</legend>
+                <div id="divloginCntr">
+                    <input style="display: none">
+                    <input type="password" style="display: none">
+                    <div class="input">
+                        @*<input name="txtLoginID" type="text" id="txtLoginID" autocomplete="off" placeholder="Login ID" maxlength="50" required="" />*@
+                        @Html.TextBoxFor(x => x.UserID, new { placeholder = "Login ID", @class = "form-input" })
+                        <span><i class="fa fa-user"></i></span>
+                    </div>
+
+                    <div class="input">
+                        @*<input name="txtPassword" type="password" id="txtPassword" maxlength="15" placeholder="Password" required="" />*@
+                        @Html.TextBoxFor(x => x.Password, new { placeholder = "Password", @class = "form-input" })
+                        <span><i class="fa fa-lock" style="margin-top:2px;"></i></span>
+                    </div>
+
+                    <div class="divCaptcha input" style="display: none;">
+                        <div id="mainCaptcha"></div>
+                        <input id="txtCaptcha" type="text" placeholder="Captcha" style="width: 70%;" />
+                    </div>
+
+
+
+                    <div class="divHelp">
+                        <input name="chkRemember" type="checkbox" id="chkRemember" style="float: left; margin-top: 1px !important;" /><span>Remember Me</span>
+
+                        <a style="float: right; cursor: pointer;" onclick="OnForgot();">Forgot Credentials?</a> 
+                        <a style="float: right; cursor: pointer;" onclick="OnRegister();">Register? &nbsp; </a>
+                    </div>
+
+                </div>
+
+                <div id="divForgot" style="display: none;">
+                    <div class="input">
+                        <input name="txtName" type="text" id="txtName" placeholder="Name" autocomplete="off" maxlength="50" />
+                        <span><i class="fa fa-user"></i></span>
+                    </div>
+
+                    <div class="input">
+                        <div class="input-group">
+                            <input name="txtDOB" type="text" id="txtDOB" placeholder="Date of Birth" autocomplete="off" bootstrapdate="true" />
+                            <span><i class="fa fa-calendar-o" style="font-size: 16px;margin-top:4px;"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        <input name="txtMobile" type="text" id="txtMobile" placeholder="Mobile" autocomplete="off" onkeypress="return integerOnly(this,event);" onchange="return integerOnly(this,event);" maxlength="10" />
+                        <span><i class="fa fa-mobile" style="font-size: 24px;"></i></span>
+                    </div>
+                    <div class="divHelp">
+                        <a style="float: left; cursor: pointer;" onclick="return Instructions();">Instructions</a>
+
+                        <a style="float: right; cursor: pointer;" onclick="OnLogin(1);">Login ?</a>
+                    </div>
+                </div> 
+                <div id="divRegister" style="display: none;">
+                    <div class="input">
+                        @*<input name="txtName" type="text" id="txtName" placeholder="Name" autocomplete="off" maxlength="50" />*@
+                        @Html.TextBoxFor(x => x.UserID, new { placeholder = "Login ID", @class = "form-input" })
+                        <span><i class="fa fa-user"></i></span>
+                    </div>
+                    <div class="input">
+                        @*<input name="txtName" type="text" id="txtName" placeholder="Email" autocomplete="off" maxlength="50" />*@
+                        @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @class = "form-input" })
+                        <span><i class="fa fa-user"></i></span>
+                    </div>
+
+                    <div class="input">
+                        <div class="input-group">
+                            @*<input name="txtDOB" type="text" id="txtDOB" placeholder="Date of Birth" autocomplete="off" bootstrapdate="true" />*@
+                            @Html.TextBoxFor(x => x.DOB, new { placeholder = "Date of Birth", @class = "form-input" })
+                            <span><i class="fa fa-calendar-o" style="font-size: 16px;margin-top:4px;"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        @*<input name="txtMobile" type="text" id="txtMobile" placeholder="Mobile" autocomplete="off" onkeypress="return integerOnly(this,event);" onchange="return integerOnly(this,event);" maxlength="10" />*@
+                        @Html.TextBoxFor(x => x.Mobile, new { placeholder = "Mobile", @class = "form-input" })
+                        <span><i class="fa fa-mobile" style="font-size: 24px;"></i></span>
+                    </div>
+                    <div class="divHelp">
+                        <a style="float: left; cursor: pointer;" onclick="return Instructions();">Instructions</a>
+
+                        <a style="float: right; cursor: pointer;" onclick="OnLogin(1);">Login ?</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
+
+                <input type="submit" name="btnLogin" value="" id="btnLogin" style="display: none;" />
+
+            </fieldset>
+
+            <div class="loading" style="display: none;">
+                <img src="../images/login_progress.gif" />
+            </div>
+
+
+            <div class="feedback">
+                login successful<br />
+                redirecting...
+            </div>
+
+            <div class="feedback-Unsucess">
+                login unsuccessful<br />
+                try again...
+            </div>
+
+            @*</form>*@
+        }
+    </div>
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+    window.history.forward();
+    function disableBack() {
+        window.history.forward();
+    }
+
+
+    function Instructions() {
+        var str = "<b>Instructions:</b><br/><br/>" +
+            "1) The above information is meant and required for user, administrator, student, teacher or coordinator.<br/>" +
+            "2) Please input name, date of birth and mobile which is registered with the school.<br/>" +
+            "3) The login credentials will be instantly regenerated and sent to your registered Mobile / Email.<br/>" +
+            "4) In case you fail to reset the credentials due to mismatch in the information, please contact the school to verify and update the same. ";
+
+        return AlertDialogBox(str, 825, "i");
+
+    }
+    function OnRegister() {
+
+        var divForgot = document.getElementById("divForgot");
+        var divloginCntr = document.getElementById("divloginCntr")
+
+        var arrstrLoginIDs = "txtLoginID,txtPassword".split(",");
+        var arrforgotIDs = "txtName,txtDOB,txtMobile".split(",");
+
+
+        divRegister.style.display = "block";
+        divloginCntr.style.display = "none";
+        divForgot.style.display = "none";
+    }
+
+    function OnForgot() {
+        var divForgot = document.getElementById("divForgot");
+        var divloginCntr = document.getElementById("divloginCntr")
+
+        var arrstrLoginIDs = "txtLoginID,txtPassword".split(",");
+        var arrforgotIDs = "txtName,txtDOB,txtMobile".split(",");
+
+
+        for (var i = 0; i < arrstrLoginIDs.length; i++) {
+
+            $("#" + arrstrLoginIDs[i]).attr("required", false);
+        }
+
+        for (var i = 0; i < arrforgotIDs.length; i++) {
+            $("#" + arrforgotIDs[i]).attr("required", true);
+
+        }
+
+        divRegister.style.display = "none";
+        divloginCntr.style.display = "none";
+        divForgot.style.display = "block";
+
+        $("#legend1").html("Forgot Credentials");
+        $(".feedback").hide();
+        $(".feedback-Unsucess").hide();
+        $("#tbSessionOut").hide();
+        document.getElementById("HLogin").value = 1;
+
+    }
+
+    function OnLogin(type) {
+        var divForgot = document.getElementById("divForgot");
+        var divloginCntr = document.getElementById("divloginCntr")
+
+        var arrstrLoginIDs = "txtLoginID,txtPassword".split(",");
+        var arrforgotIDs = "txtName,txtDOB,txtMobile".split(",");
+
+
+        for (var i = 0; i < arrstrLoginIDs.length; i++) {
+
+            $("#" + arrstrLoginIDs[i]).attr("required", true);
+        }
+
+        for (var i = 0; i < arrforgotIDs.length; i++) {
+            $("#" + arrforgotIDs[i]).attr("required", false);
+
+        }
+        divRegister.style.display = "none";
+        divloginCntr.style.display = "block";
+        divForgot.style.display = "none";
+        $("#legend1").html("Login");
+        if (type != 0) {
+            $(".feedback").hide();
+            $(".feedback-Unsucess").hide();
+        }
+        document.getElementById("HLogin").value = 0;
+    }
+
+
+    $(".login").submit(function () {
+        if (document.getElementById("HLogin").value == 0) {
+            $(".feedback").hide();
+            $(".feedback-Unsucess").hide();
+            $(".loading").show();
+            var LoginID = $("#txtLoginID").val();
+            var Password = $("#txtPassword").val();
+            $("#tbSessionOut").hide();
+            var params = "";
+            var actbXmlHttp = false;
+
+
+
+            if (window.XMLHttpRequest) {
+                actbXmlHttp = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject) {
+                try {
+                    actbXmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+                }
+                catch (e) {
+                    try {
+                        actbXmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    catch (e) {
+                        return;
+                    }
+                }
+            }
+            // }
+
+
+            var url = "";
+
+            LoginID = LoginID.replace("#", "$HASH$").replace("=", "$EQUAL$").replace("&", "$AMPERSAND$");
+            Password = Password.replace("#", "$HASH$").replace("=", "$EQUAL$").replace("&", "$AMPERSAND$");
+
+            url = window.location.href.split("/admin/")[0] + "/cloud9_mapp.asmx/Login?LoginID=" + LoginID + "&Password=" + Password + "&DeviceType=0&DeviceID=&MobileApp=0";
+
+
+            actbXmlHttp.onreadystatechange = function () {
+                if (actbXmlHttp.readyState == 4 && actbXmlHttp.status == 200) {
+                    var AuthCode = ReadXML(actbXmlHttp);
+                    //alert(AuthCode.substring(0, 2));
+
+                    var dviCaptcha = document.getElementById("mainCaptcha");
+                    var txtCaptcha = document.getElementById("txtCaptcha");
+                    if (txtCaptcha.value != "" && removeSpaces(dviCaptcha.innerText) != removeSpaces(txtCaptcha.value)) {
+                        AuthCode = "0|Invalid Captcha Code";
+                    }
+
+
+                    if (AuthCode.substring(0, 2) != "0|") {
+
+                        $(this).find(".submit i").removeAttr('class').addClass("fa fa-check").css({ "color": "#fff" });
+                        $(".submit").css({ "background": "#2ecc71", "border-color": "#2ecc71", "color": "#fff" });
+                        $(".feedback-Unsucess").hide();
+                        $(".feedback").html("login successful<br />redirecting...")
+                        $(".feedback").css("background", "#2ecc71");
+                        $(".loading").hide();
+                        $(".feedback").show().animate({ "opacity": "1", "bottom": "-80px" }, 1000);
+                        $("input").css({ "border-color": "#2ecc71" });
+
+                        var url = window.location.href.replace("expire", "e");
+                        var form = $('<form action="' + url + '" method="post">' +
+                            '<input type="hidden" name="authcode" value="' + AuthCode + '" /><input type="hidden" name="hRemeber" value="' + document.getElementById("chkRemember").checked + '" />' +
+                            '</form>');
+                        $('body').append(form);
+                        form.submit();
+
+                    }
+                    else {
+                        document.getElementById("HPasswordAttempt").value = parseInt(document.getElementById("HPasswordAttempt").value) + 1;
+                        $(this).find(".submit i").removeAttr('class').addClass("fa fa-cross").css({ "color": "#fff" });
+                        $(".submit").css({ "background": "#ff8080", "border-color": "#ff8080", "color": "#fff" });
+                        $(".feedback").hide();
+                        var strMessage = AuthCode.split("|")[1];
+                        if (strMessage == "") {
+                            strMessage = "login unsuccessful<br />try again...";
+                        }
+                        $(".feedback-Unsucess").html(strMessage);
+                        $(".feedback-Unsucess").css("background", "#ff3333");
+                        $(".loading").hide();
+                        $(".feedback-Unsucess").show().animate({ "opacity": "1", "bottom": "-80px" }, 1000);
+                        $("input").css({ "border-color": "#ff8080" });
+
+                        //alert(document.getElementById("HPasswordAttempt").value);
+                        if (document.getElementById("HPasswordAttempt").value >= 3) {
+                            Captcha();
+                            $(".divCaptcha").show();
+                            $("#txtCaptcha").attr("required", true);
+                        }
+
+                    }
+                }
+            };
+            actbXmlHttp.open("GET", url, true);
+            actbXmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            actbXmlHttp.setRequestHeader("Content-length", params.length);
+            actbXmlHttp.setRequestHeader("Connection", "close");
+            actbXmlHttp.send();
+
+            return false;
+        }
+        else { //REGISTER PROCESS STARTS-------------------------------------------
+            $(".feedback").hide();
+            $(".feedback-Unsucess").hide();
+            $(".loading").show();
+            var Name = $("#txtName").val();
+            var DOB = $("#txtDOB").val();
+            var Mobile = $("#txtMobile").val();
+
+            var params = "";
+
+            var actbXmlHttp = false;
+
+            if (window.XMLHttpRequest) {
+                actbXmlHttp = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject) {
+                try {
+                    actbXmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+                }
+                catch (e) {
+                    try {
+                        actbXmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    catch (e) {
+                        return;
+                    }
+                }
+            }
+
+            var url = "";
+
+
+            url = window.location.href.split("/admin/")[0] + "/cloud9_mapp.asmx/Register?Name=" + Name + "&DOB=" + DOB + "&Mobile=" + Mobile + "&MobileApp=0";
+
+
+
+
+            actbXmlHttp.onreadystatechange = function () {
+                if (actbXmlHttp.readyState == 4 && actbXmlHttp.status == 200) {
+                    var AuthCode = ReadXML(actbXmlHttp);
+                    if (AuthCode == "1") {
+
+                        $(this).find(".submit i").removeAttr('class').addClass("fa fa-check").css({ "color": "#fff" });
+                        $(".submit").css({ "background": "#2ecc71", "border-color": "#2ecc71" });
+                        $(".feedback-Unsucess").hide();
+                        $(".feedback").html("Your LoginID and Password sent to your registered mobile / email !")
+                        $(".feedback").css("background", "#2ecc71");
+                        $(".loading").hide();
+                        $(".feedback").show().animate({ "opacity": "1", "bottom": "-80px" }, 1000);
+                        $("input").css({ "border-color": "#2ecc71" });
+
+                        $("#txtName").val("");
+                        $("#txtDOB").val("");
+                        $("#txtMobile").val("");
+
+                        OnLogin(0);
+                    }
+                    else {
+                        $(this).find(".submit i").removeAttr('class').addClass("fa fa-cross").css({ "color": "#fff" });
+                        $(".submit").css({ "background": "#ff8080", "border-color": "#ff8080", "color": "#fff" });
+                        $(".feedback").hide();
+                        if (AuthCode == "2") {
+                            $(".feedback-Unsucess").html("Please contact at <br />support@shauryasoft.com")
+                        }
+                        else {
+                            $(".feedback-Unsucess").html("Information did not match <br />try again...")
+                        }
+                        $(".feedback-Unsucess").css("background", "#ff3333");
+                        $(".loading").hide();
+                        $(".feedback-Unsucess").show().animate({ "opacity": "1", "bottom": "-80px" }, 1000);
+                        $("input").css({ "border-color": "#ff8080" });
+
+                    }
+                }
+            };
+            actbXmlHttp.open("GET", url, true);
+            actbXmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            actbXmlHttp.setRequestHeader("Content-length", params.length);
+            actbXmlHttp.setRequestHeader("Connection", "close");
+            actbXmlHttp.send();
+
+            return false;
+
+        }
+    });
+
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+
+    function ReadXML(xml) {
+        var xmlDoc = xml.responseXML;
+        var x = xmlDoc.getElementsByTagName('string')[0];
+        var y = x.childNodes[0];
+        return y.nodeValue;
+    }
+
+
+    function Captcha() {
+        var alpha = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        var i;
+        for (i = 0; i < 6; i++) {
+            var a = alpha[Math.floor(Math.random() * alpha.length)];
+            var b = alpha[Math.floor(Math.random() * alpha.length)];
+            var c = alpha[Math.floor(Math.random() * alpha.length)];
+            var d = alpha[Math.floor(Math.random() * alpha.length)];
+            var e = alpha[Math.floor(Math.random() * alpha.length)];
+            var f = alpha[Math.floor(Math.random() * alpha.length)];
+            var g = alpha[Math.floor(Math.random() * alpha.length)];
+        }
+        var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' ' + f + ' ' + g;
+        //document.getElementById("mainCaptcha").innerHTML = code;
+        document.getElementById("mainCaptcha").innerText = code;
+    }
+
+    function removeSpaces(string) {
+        return string.split(' ').join('');
+    }
+
+
+
+
+</script>
+

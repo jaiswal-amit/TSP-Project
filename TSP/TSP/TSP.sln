@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSP", "TSP\TSP.csproj", "{399604E4-2C3B-45BC-860F-B06DE70BB79E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2342B385-6A15-4274-A8C9-824B8E3BE028}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{399604E4-2C3B-45BC-860F-B06DE70BB79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{399604E4-2C3B-45BC-860F-B06DE70BB79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{399604E4-2C3B-45BC-860F-B06DE70BB79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{399604E4-2C3B-45BC-860F-B06DE70BB79E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2342B385-6A15-4274-A8C9-824B8E3BE028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2342B385-6A15-4274-A8C9-824B8E3BE028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2342B385-6A15-4274-A8C9-824B8E3BE028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2342B385-6A15-4274-A8C9-824B8E3BE028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96DBC0E0-7F8F-486C-B145-EC6F769E2649}
+	EndGlobalSection
+EndGlobal

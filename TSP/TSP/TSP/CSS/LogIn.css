@@ -1,0 +1,534 @@
+﻿
+body {
+    height: 100%;
+}
+
+* {
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    /* padding: 0; */
+    /* border: 0; */
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: url(../images/backgroud.png) repeat fixed;
+    background-size: 100% 150%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+}
+
+#txtCaptcha {
+    width: 46% !important;
+    margin-left: 3%;
+    display: inline-block;
+    padding: 10px 5px 10px 19px;
+}
+
+#mainCaptcha {
+    width: 50%;
+    background: #4183d2;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    border-radius: 5px;
+    float: left;
+}
+
+.appLogo {
+    width: 100%;
+    text-align: center;
+    top: 56%;
+    position: relative;
+}
+
+
+
+.login {
+    position: relative;
+    top: 36%;
+    width: 30%;
+    display: table;
+    margin: 6px auto 0 auto;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 19px 30px #d2d0d0;
+}
+
+.legend {
+    position: relative;
+    width: 100%;
+    display: block;
+    background: #4183d2;
+    padding: 15px;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 0 !important;
+}
+
+    .legend:after {
+        content: "";
+        background-image: url(../images/multy-user.png);
+        background-size: 100px 100px;
+        background-repeat: no-repeat;
+        background-position: 152px -16px;
+        opacity: 0.06;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+    }
+
+::-webkit-input-placeholder {
+    color: lightgray;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: lightgray;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: lightgray;
+}
+
+:-ms-input-placeholder {
+    color: lightgray;
+}
+
+
+
+.input {
+    position: relative;
+    width: 90%;
+    margin: 15px auto;
+}
+
+    .input span {
+        position: absolute;
+        display: block;
+        color: #d4d4d4;
+        left: 10px;
+        top: 8px;
+        font-size: 20px;
+    }
+
+    .input input {
+        width: 100%;
+        padding: 10px 5px 10px 40px;
+        display: block;
+        border: 1px solid #e4dcdc;
+        border-radius: 4px;
+        transition: 0.2s ease-out;
+        color: #a1a1a1;
+    }
+
+/*.input input:focus {
+            padding: 10px 5px 10px 10px;
+            outline: 0;
+            border-color: #4183d2;
+        }*/
+
+.submit {
+    width: 45px;
+    height: 45px;
+    display: block;
+    margin: 0 auto -15px auto;
+    background: #fff;
+    border-radius: 100%;
+    border: 1px solid #4183d2;
+    color: #4183d2;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 7px #fff;
+    transition: 0.2s ease-out;
+}
+
+    .submit:hover,
+    .submit:focus {
+        background: #4183d2;
+        color: #fff;
+        outline: 0;
+    }
+
+
+.loading {
+    position: absolute;
+    bottom: -70px;
+    width: 100%;
+    text-align: center;
+}
+
+.feedback {
+    position: absolute;
+    bottom: -70px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 12px;
+    display: none;
+    opacity: 0;
+    background: #2ecc71;
+}
+
+    .feedback:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(46, 204, 113, 0);
+        border-bottom-color: #2ecc71;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+
+
+.feedback-Unsucess {
+    position: absolute;
+    bottom: -70px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 12px;
+    display: none;
+    opacity: 0;
+    background: rgb(255, 51, 51);
+}
+
+    .feedback-Unsucess:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: rgb(255, 51, 51);
+        border-width: 10px;
+        margin-left: -10px;
+    }
+
+.poweredBy {
+    top: 54%;
+    width: 50%;
+    color: black;
+    position: relative;
+    left: 25%;
+    text-align: center;
+    font-size: 12px;
+    color: #a1a1a1;
+}
+
+    .poweredBy a {
+        text-decoration: none;
+        color: #a1a1a1;
+    }
+
+
+        .poweredBy a:hover {
+            text-decoration: underline;
+            color: #4183d2;
+        }
+
+    .poweredBy img {
+        width: 7%;
+    }
+
+
+.schoolLogo {
+    top: 5%;
+    width: 80%;
+    left: 10%;
+    position: relative;
+    text-align: center;
+}
+
+    .schoolLogo img {
+        height: 85px;
+    }
+
+    .schoolLogo span {
+        font: normal 30px 'Exo 2';
+        margin-top: 11px;
+        display: inline-block;
+        color: #406da2;
+    }
+
+.divHelp {
+    padding: 0% 6%;
+}
+
+
+.divHelp {
+    height: 18px;
+}
+
+
+    .divHelp span {
+        color: #a1a1a1;
+        font-size: 13px;
+        margin-top: -2px;
+        display: inline-block;
+        float: left;
+        margin-left: 4px;
+    }
+
+    .divHelp a {
+        color: #4183d2;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+        .divHelp a:hover {
+            text-decoration: underline;
+        }
+
+.divLogout {
+    left: 35%;
+    width: 30%;
+    position: absolute;
+    text-align: center;
+    background: green;
+    color: white;
+    padding: 1%;
+    top: 75%;
+    border-radius: 4px;
+    opacity: .7;
+}
+
+div.calendarbutton {
+    position: absolute;
+    width: 15px;
+    height: 16px;
+    background: transparent url("../images/Calendar.jpg") no-repeat center;
+}
+
+
+/*Mobile Resolution*/
+
+@media screen and (max-width:1009px) {
+    html,
+    body {
+        background: url(../images/background_1009.png) repeat fixed !important;
+    }
+
+    #login .login {
+        width: 80% !important;
+    }
+
+    #login .divLogout {
+        width: 80% !important;
+        left: 10%;
+    }
+
+
+    .schoolLogo img {
+        width: 25%;
+    }
+
+    .schoolLogo span {
+        font-size: 22px;
+    }
+
+    .poweredBy img {
+        width: 16%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    html,
+    body {
+        background: url(../images/background_767.png) repeat fixed !important;
+    }
+
+    #login .login {
+        width: 90% !important;
+    }
+
+    #login .divLogout {
+        width: 90% !important;
+        left: 5%;
+    }
+
+
+    .schoolLogo img {
+        width: 35%;
+    }
+
+    .schoolLogo span {
+        font-size: 32px;
+    }
+
+    .poweredBy img {
+        width: 20%;
+    }
+
+    .input span {
+        left: 12px;
+        top: 18px;
+        font-size: 35px;
+    }
+
+    .input input {
+        padding: 17px 11px 21px 58px;
+        font-size: 31px;
+    }
+
+    .legend {
+        font-size: 33px;
+    }
+
+    .divHelp span {
+        font-size: 22px;
+    }
+
+    .divHelp a {
+        font-size: 24px;
+    }
+
+    .submit {
+        width: 60px;
+        height: 68px;
+        font-size: 28px;
+        margin-top: 3% !important;
+    }
+
+    .schoolLogo img {
+        height: auto !important;
+    }
+
+    .poweredBy a {
+        font-size: 12px;
+    }
+
+    .feedback {
+        font-size: 14px;
+    }
+
+    .fa-user {
+        font-size: 32px !important;
+    }
+
+    .fa-calendar-o {
+        font-size: 32px !important;
+    }
+
+    .fa-mobile {
+        font-size: 50px !important;
+    }
+
+    .calendarbutton {
+        height: 50px !important;
+        width: 42px !important;
+    }
+
+    .appLogo img {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width:479px) {
+
+    html,
+    body {
+        background: url(../images/background_479.png) repeat fixed !important;
+    }
+
+    #login .login {
+        width: 80% !important;
+    }
+
+    #login .divLogout {
+        width: 80% !important;
+        left: 10%;
+        top: 67% !important;
+    }
+
+
+    .schoolLogo img {
+        width: 25%;
+    }
+
+    .schoolLogo span {
+        font-size: 22px;
+    }
+
+    .poweredBy img {
+        width: 16%;
+    }
+
+    .input span {
+        left: 10px;
+        top: 15px;
+        font-size: 20px;
+    }
+
+    .input input {
+        padding: 13px 10px 12px 38px;
+        font-size: 18px;
+    }
+
+    .legend {
+        font-size: 20px;
+    }
+
+    .divHelp span {
+        font-size: 13px;
+    }
+
+    .divHelp a {
+        font-size: 12px;
+    }
+
+    .submit {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+        margin-top: 0 !important;
+    }
+
+    .schoolLogo img {
+        height: auto !important;
+    }
+
+    .poweredBy a {
+        font-size: 12px;
+    }
+
+    .feedback {
+        font-size: 12px;
+    }
+
+    .feedback-Unsucess {
+        font-size: 12px;
+    }
+
+    .fa-user {
+        font-size: 23px !important;
+    }
+
+    .fa-calendar-o {
+        font-size: 20px !important;
+    }
+
+    .fa-mobile {
+        font-size: 29px !important;
+    }
+
+    .calendarbutton {
+        height: 36px !important;
+        width: 28px !important;
+    }
+}
