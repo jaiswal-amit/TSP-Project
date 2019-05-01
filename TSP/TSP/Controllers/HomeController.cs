@@ -40,7 +40,7 @@ namespace TSP.Controllers
 
             return View();
         }
-        public ActionResult Registration()
+        public  ActionResult Registration()
         {
             return View();
         }
