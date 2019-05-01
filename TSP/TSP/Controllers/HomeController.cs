@@ -40,10 +40,7 @@ namespace TSP.Controllers
 
             return View();
         }
-        public ActionResult Registration()
-        {
-            return View();
-        }
+      
 
         [HttpPost]
         public ActionResult Registration(LogInModel objReg)
